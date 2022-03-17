@@ -14,11 +14,17 @@ import java.lang.Math;
 
 public class JavaNumberQuiz {
     // Declare num1[] for first number in problem
-    private static int[ ] num1 = {10};
+    private static int[ ] num1 = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    };
     // Declare num2[] for second number in problem
-    private static int[ ] num2 = {10};
+    private static int[ ] num2 = { 
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    };
     // Declare answer[] for answers input by user
-    private static int[ ] answer = {10};
+    private static int[ ] answer = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+    };
     // Declare constant for quiz length
     private static final int QUIZ_LENGTH = 10;
     
@@ -29,9 +35,10 @@ public class JavaNumberQuiz {
     }   // End of PSV Main
     private static void createQuiz() {
         for (int counter = 0; counter < QUIZ_LENGTH; counter++) {
+            
             // Generate numbers between 0 - 99 to fill arrays
-            num1[counter] = (int)(Math.random() * 100);
-            num2[counter] = (int)(Math.random() * 100);
-        }
-    }
+            num1[counter] = (int)(Math.random()*100);
+            num2[counter] = (int)(Math.random()*100);
+        }   // End of for loop
+    }   // End of createQuiz
 }   // End of Class JavaNumberQuiz
