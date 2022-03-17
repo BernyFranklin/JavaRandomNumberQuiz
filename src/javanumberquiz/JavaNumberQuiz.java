@@ -32,13 +32,34 @@ public class JavaNumberQuiz {
     public static void main(String[] args) {
         // Call createQuiz
         createQuiz();
+        // Call administerQuiz
+        administerQuiz();
     }   // End of PSV Main
     private static void createQuiz() {
+        // Loop through 0-9 to fill arrays
         for (int counter = 0; counter < QUIZ_LENGTH; counter++) {
-            
             // Generate numbers between 0 - 99 to fill arrays
             num1[counter] = (int)(Math.random()*100);
             num2[counter] = (int)(Math.random()*100);
         }   // End of for loop
     }   // End of createQuiz
+    
+    // Start administerQuiz
+    private static void administerQuiz() {
+        // Create scanner object
+        Scanner stdin = new Scanner (System.in);
+        // Welcome and start quiz
+        System.out.println ("=========================================");
+        System.out.println ("                Math Quiz                ");
+        System.out.println ("=========================================");
+        System.out.println ("Answer the following 10 addition problems");
+        System.out.println ("=========================================");
+        // For loop to generate test questions, read and store user input
+        for (int counter = 0; counter < QUIZ_LENGTH; counter++) {
+            System.out.printf ("\n%2d. %2d + %2d = ", 
+                    (counter + 1), num1[counter], num2[counter]);
+            answer[counter] = stdin.nextInt();
+        }   // End of for loop
+        System.out.println ("=========================================");
+    }   // End of administerQuiz
 }   // End of Class JavaNumberQuiz
