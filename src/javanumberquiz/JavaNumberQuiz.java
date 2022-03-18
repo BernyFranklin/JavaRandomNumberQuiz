@@ -17,25 +17,18 @@ import java.lang.Math;
 // Start JavaNumberQuiz
 public class JavaNumberQuiz {
     // Declare num1[] for first number in problem
-    private static int[ ] num1 = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
+    private static int[ ] num1 = new int[10];
     // Declare num2[] for second number in problem
-    private static int[ ] num2 = { 
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
+    private static int[ ] num2 = new int[10];
     // Declare answer[] for answers input by user
-    private static int[ ] answer = {
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
+    private static int[ ] answer = new int[10];
     // Declare constant for quiz length
     private static final int QUIZ_LENGTH = 10;
     // Declare constant for max score an question points
     private static final int MAX_SCORE = 100;
     private static final int CORRECT_ANSWER = 10;
     
-    
-
+    // Start Main
     public static void main(String[] args) {
         // Call createQuiz
         createQuiz();
@@ -44,6 +37,8 @@ public class JavaNumberQuiz {
         // Call gradeQuiz
         gradeQuiz();
     }   // End of PSV Main
+    
+    // Start creatQuiz
     private static void createQuiz() {
         // Loop through 0-9 to fill arrays
         for (int counter = 0; counter < QUIZ_LENGTH; counter++) {
@@ -60,13 +55,15 @@ public class JavaNumberQuiz {
         Scanner stdin = new Scanner (System.in);
         // Creat counter for do/while loop
         int counter = 0;
+        
         // Welcome and start quiz
         System.out.println ("=========================================");
         System.out.println ("                Math Quiz                ");
         System.out.println ("=========================================");
         System.out.println ("Answer the following 10 addition problems");
         System.out.println ("=========================================");
-        // Do while loop
+        
+        // Do while loop to print equations and read answers
         do {
             // Set error flag
             boolean isValid = true;
@@ -88,8 +85,9 @@ public class JavaNumberQuiz {
             // Update counter if valid input
             if (isValid)
                 counter++;
-        } while (counter < QUIZ_LENGTH);
+        } while (counter < QUIZ_LENGTH);   // End of Do..while
         
+        // This big line separates the quiz from the answers
         System.out.println ("=========================================");
     }   // End of administerQuiz
     
