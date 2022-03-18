@@ -9,6 +9,8 @@
 package javanumberquiz;
 // Import scanner for user input
 import java.util.Scanner;
+// Import mismatch exception
+import java.util.InputMismatchException;
 // Import Math for random number gen
 import java.lang.Math;
 
@@ -55,18 +57,38 @@ public class JavaNumberQuiz {
     private static void administerQuiz() {
         // Create scanner object
         Scanner stdin = new Scanner (System.in);
+        // Creat counter for do/while loop
+        int counter = 0;
         // Welcome and start quiz
         System.out.println ("=========================================");
         System.out.println ("                Math Quiz                ");
         System.out.println ("=========================================");
         System.out.println ("Answer the following 10 addition problems");
         System.out.println ("=========================================");
-        // For loop to generate test questions, read and store user input
-        for (int counter = 0; counter < QUIZ_LENGTH; counter++) {
+        // Do while loop
+        do {
+            // Set error flag
+            boolean isValid = true;
+            // Print equation as 1. xx + xx =
             System.out.printf ("\n%2d. %2d + %2d = ", 
                     (counter + 1), num1[counter], num2[counter]);
-            answer[counter] = stdin.nextInt();
-        }   // End of for loop
+            // Test for valid input
+            try {
+                // Get answer input from user
+                answer[counter] = stdin.nextInt();
+            } catch (InputMismatchException e) {
+                // Print error for invalid input
+                System.out.println ("Answer must be a numeric value");
+                // Clear buffer
+                stdin.nextLine();
+                // Set flag to skip count
+                isValid = false;
+            }  // End of catch
+            // Update counter if valid input
+            if (isValid)
+                counter++;
+        } while (counter < QUIZ_LENGTH);
+        
         System.out.println ("=========================================");
     }   // End of administerQuiz
     
@@ -98,4 +120,22 @@ public class JavaNumberQuiz {
         System.out.printf ("\n        Your final score is %2d/%3d\n", score, MAX_SCORE);
         System.out.printf ("==========================================\n");
     }   // End of gradeQuiz
+    
+    // Start errorHandler
+    private static boolean errorHandler(int input) {
+        // Assume input is numeric
+        boolean isValid = true;
+        // Double variable for try
+        double inputTest;
+        // Check if numeric
+        try {
+            inputTest = Double.valueOf(input);
+            if (inputTest <0)
+                isValid = false;
+        } catch (NumberFormatException e) {
+            // Set flag for error present
+            isValid = false;
+        }   // End of catch   // End of catch
+        return isValid;
+    }   // End errorHandler
 }   // End of Class JavaNumberQuiz
