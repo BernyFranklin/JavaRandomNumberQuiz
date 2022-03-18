@@ -14,6 +14,7 @@ import java.util.InputMismatchException;
 // Import Math for random number gen
 import java.lang.Math;
 
+// Start JavaNumberQuiz
 public class JavaNumberQuiz {
     // Declare num1[] for first number in problem
     private static int[ ] num1 = {
@@ -105,37 +106,23 @@ public class JavaNumberQuiz {
             // Print original problem with original answer
             System.out.printf ("\n%2d. %2d + %2d = %3d\n",
                     (counter + 1), num1[counter], num2[counter], answer[counter]);
+            // If answer is correct, print correct and add point to counter
             if (answer[counter] == (num1[counter] + num2[counter])) {
                 System.out.printf ("                  CORRECT");
                 pointCount++;
             } else {
+                // If incorrect, print correct answer and count 0 points
                 System.out.printf ("                  INCORRECT, Answer is %3d", 
                         (num1[counter] + num2[counter]));
             }  // End of if/else
         }   // End of for loop
+        
         // Compute score by multiplying pointCount by CORRECT_ANSWER
         score = pointCount * CORRECT_ANSWER;
+        
         // Print score
         System.out.printf ("\n==========================================");
         System.out.printf ("\n        Your final score is %2d/%3d\n", score, MAX_SCORE);
         System.out.printf ("==========================================\n");
     }   // End of gradeQuiz
-    
-    // Start errorHandler
-    private static boolean errorHandler(int input) {
-        // Assume input is numeric
-        boolean isValid = true;
-        // Double variable for try
-        double inputTest;
-        // Check if numeric
-        try {
-            inputTest = Double.valueOf(input);
-            if (inputTest <0)
-                isValid = false;
-        } catch (NumberFormatException e) {
-            // Set flag for error present
-            isValid = false;
-        }   // End of catch   // End of catch
-        return isValid;
-    }   // End errorHandler
 }   // End of Class JavaNumberQuiz
